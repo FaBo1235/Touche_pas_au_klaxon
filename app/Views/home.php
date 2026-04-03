@@ -3,8 +3,9 @@
     <p>
         Bienvenue <?= $_SESSION['user']['firstname'] ?>
     </p>
-
+    
     <a href="?url=create-trip">Créer un trajet</a>
+    <a href="?url=my-reservations">Mes réservations</a>
     <a href="?url=logout">Déconnexion</a>
 
 <?php else: ?>
@@ -49,10 +50,16 @@
                 <button type="submit">Réserver</button>
             </form>
 
-            <a href="?url=my-reservations">Mes réservations</a>
 
         </div>
 
     <?php endforeach; ?>
+
+<?php endif; ?>
+
+<?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'ADMIN'): ?>
+
+    <p>Mode ADMIN activé</p>
+    <a href="?url=admin">Panel Admin</a>
 
 <?php endif; ?>

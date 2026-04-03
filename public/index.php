@@ -47,6 +47,10 @@ elseif ($url === 'my-reservations') {
 
     $controller = new TripController();
     $controller->cancelReservation();
+} elseif ($url === 'admin') {
+
+    $controller = new HomeController();
+    $controller->admin();
 } else {
 
     $controller = new HomeController();

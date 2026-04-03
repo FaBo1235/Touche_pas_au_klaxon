@@ -18,6 +18,11 @@ class TripController
         $agencyModel = new Agency($pdo);
         $agencies = $agencyModel->getAll();
 
+        if ($_SESSION['user']['role'] !== 'ADMIN') {
+            echo "Accès refusé";
+            exit;
+        }
+
         require '../app/Views/create_trip.php';
     }
 
@@ -149,5 +154,21 @@ class TripController
         $stmt->execute([$tripId]);
 
         header("Location: ?url=my-reservations");
+    }
+
+    public function delete()
+    {
+        global $pdo;
+
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'ADMIN') {
+            header("Location: ?url=home");
+            exit;
+        }
+
+        $stmt = $pdo->prepare("DELETE FROM trips WHERE id = ?");
+        $stmt->execute([$_POST['trip_id']]);
+
+        header("Location: ?url=admin");
+        exit;
     }
 }
