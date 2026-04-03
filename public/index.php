@@ -13,27 +13,36 @@ if ($url === 'login') {
 
     $controller = new AuthController();
     $controller->loginForm();
-} elseif ($url === 'do-login') {
+}
+
+elseif ($url === 'do-login') {
 
     $controller = new AuthController();
     $controller->login();
-} elseif ($url === 'logout') {
+}
+
+elseif ($url === 'logout') {
 
     $controller = new AuthController();
     $controller->logout();
     
 } 
+
 elseif ($url === 'create-trip') {
 
     $controller = new TripController();
     $controller->create();
 
-} elseif ($url === 'store-trip') {
+}
+
+elseif ($url === 'store-trip') {
 
     $controller = new TripController();
     $controller->store();
 
-} elseif ($url === 'reserve') {
+} 
+
+elseif ($url === 'reserve') {
 
     $controller = new TripController();
     $controller->reserve();
@@ -43,15 +52,27 @@ elseif ($url === 'my-reservations') {
 
     $controller = new TripController();
     $controller->myReservations();
-} elseif ($url === 'cancel-reservation') {
+} 
+
+elseif ($url === 'cancel-reservation') {
 
     $controller = new TripController();
     $controller->cancelReservation();
-} elseif ($url === 'admin') {
+} 
+
+elseif ($url === 'admin') {
 
     $controller = new HomeController();
     $controller->admin();
-} else {
+} 
+
+elseif ($url === 'delete-trip') {
+
+    $controller = new TripController();
+    $controller->delete();
+} 
+
+else {
 
     $controller = new HomeController();
     $controller->index();

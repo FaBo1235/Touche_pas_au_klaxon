@@ -3,7 +3,7 @@
     <p>
         Bienvenue <?= $_SESSION['user']['firstname'] ?>
     </p>
-    
+
     <a href="?url=create-trip">Créer un trajet</a>
     <a href="?url=my-reservations">Mes réservations</a>
     <a href="?url=logout">Déconnexion</a>
@@ -16,6 +16,16 @@
 
 
 <hr>
+
+<form method="GET" action="">
+    <input type="hidden" name="url" value="home">
+
+    <input type="text" name="search" placeholder="Ville de départ">
+
+    <button type="submit">Rechercher</button>
+</form>
+
+<br>
 
 <h2>Liste des trajets</h2>
 

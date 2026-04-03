@@ -1,3 +1,5 @@
+<a href="?url=home">Retour à l'accueil</a>
+
 <h1>Panel ADMIN</h1>
 
 <?php foreach ($trips as $trip): ?>

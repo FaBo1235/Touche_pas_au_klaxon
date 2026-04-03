@@ -9,10 +9,10 @@ class Trip
         $this->pdo = $pdo;
     }
 
-    public function getAvailableTrips()
+    public function getAvailableTrips($search = null)
     {
         $sql = "
-        SELECT
+        SELECT 
             t.id,
             t.departure_datetime,
             t.arrival_datetime,
@@ -25,14 +25,25 @@ class Trip
         JOIN agencies a1 ON t.departure_agency_id = a1.id
         JOIN agencies a2 ON t.arrival_agency_id = a2.id
         LEFT JOIN users u ON t.driver_id = u.id
-        ORDER BY t.departure_datetime ASC
     ";
 
-        $stmt = $this->pdo->query($sql);
-        
+        if ($search) {
+            $sql .= " WHERE a1.city LIKE ?";
+        }
+
+        $sql .= " ORDER BY t.departure_datetime ASC";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        if ($search) {
+            $stmt->execute(["%$search%"]);
+        } else {
+            $stmt->execute();
+        }
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public function getUserReservations($userId)
     {

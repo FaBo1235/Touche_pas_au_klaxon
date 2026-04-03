@@ -11,7 +11,10 @@ class HomeController
 
         $tripModel = new Trip($pdo);
 
-        $trips = $tripModel->getAvailableTrips();
+        $search = $_GET['search'] ?? null;
+
+        $trips = $tripModel->getAvailableTrips($search);
+
 
         require '../app/Views/home.php';
     }

@@ -1,5 +1,9 @@
 <h1>Créer un trajet</h1>
 
+<a href="?url=home">Retour à l'accueil</a>
+
+<br><br>
+
 <form method="POST" action="?url=store-trip">
 
     <label>Agence de départ :</label>

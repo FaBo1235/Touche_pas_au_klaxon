@@ -14,13 +14,14 @@
             <p>Conducteur : <?= $r['firstname'] ?> <?= $r['lastname'] ?></p>
         </div>
 
+        <form method="POST" action="?url=cancel-reservation">
+            <input type="hidden" name="reservation_id" value="<?= $r['reservation_id'] ?>">
+            <input type="hidden" name="trip_id" value="<?= $r['trip_id'] ?>">
+            <button type="submit">Annuler</button>
+        </form>
     <?php endforeach; ?>
 
-    <form method="POST" action="?url=cancel-reservation">
-        <input type="hidden" name="reservation_id" value="<?= $r['reservation_id'] ?>">
-        <input type="hidden" name="trip_id" value="<?= $r['trip_id'] ?>">
-        <button type="submit">Annuler</button>
-    </form>
+    
 
 
 <?php endif; ?>
