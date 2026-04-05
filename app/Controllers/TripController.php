@@ -28,11 +28,35 @@ class TripController
 
     public function store()
     {
+
+        $now = date('Y-m-d H:i:s');
+
+        if ($_POST['departure_agency_id'] == $_POST['arrival_agency_id']) {
+            echo "<p>Les villes d'arrivée et de départ doivent être différentes.</p><a href='?url=home'>Retour</a>";
+            return;
+        }
+
+        if ($_POST['departure_datetime'] < $now) {
+            echo "<p>Départ invalide.</p><a href='?url=create-trip'>Retour</a>";
+            return;
+        }
+
+        if ($_POST['arrival_datetime'] < $now) {
+            echo "<p>Arrivée invalide.</p><a href='?url=create-trip'>Retour</a>";
+            return;
+        }
+
+        if ($_POST['arrival_datetime'] <= $_POST['departure_datetime']) {
+            echo "<p>La date d'arrivée doit être ultérieure à la date de départ.</p><a href='?url=create-trip'>Retour</a>";
+            return;
+        }
+
+
         if (!isset($_SESSION['user'])) {
             header("Location: ?url=login");
             exit;
         }
-
+        
         global $pdo;
 
         $userId = $_SESSION['user']['id'];
@@ -157,6 +181,22 @@ class TripController
     }
 
     public function delete()
+    {
+        global $pdo;
+
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'ADMIN') {
+            header("Location: ?url=home");
+            exit;
+        }
+
+        $stmt = $pdo->prepare("DELETE FROM trips WHERE id = ?");
+        $stmt->execute([$_POST['trip_id']]);
+
+        header("Location: ?url=admin");
+        exit;
+    }
+
+    public function deleteTrip()
     {
         global $pdo;
 

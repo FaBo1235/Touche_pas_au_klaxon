@@ -1,3 +1,7 @@
+<header class="flex justify-center">
+    <a href="?url=home"><img src="images/logo.png" alt="logo de voiture pour le coivoiturage" class="w-32"></a>
+</header>
+
 <h1>Connexion</h1>
 
 <form method="POST" action="?url=do-login">

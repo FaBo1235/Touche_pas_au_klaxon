@@ -72,6 +72,12 @@ elseif ($url === 'delete-trip') {
     $controller->delete();
 } 
 
+elseif ($url === 'delete-trip') {
+
+    $controller = new TripController();
+    $controller->deleteTrip();
+} 
+
 else {
 
     $controller = new HomeController();

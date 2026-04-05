@@ -13,7 +13,10 @@ class HomeController
 
         $search = $_GET['search'] ?? null;
 
-        $trips = $tripModel->getAvailableTrips($search);
+        $userId = $_SESSION['user']['id'] ?? null;
+
+        $trips = $tripModel->getAvailableTrips($_GET['search'] ?? null, $userId);
+
 
 
         require '../app/Views/home.php';
