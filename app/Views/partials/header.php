@@ -7,10 +7,16 @@
 
     <?php if (isset($_SESSION['user'])): ?>
 
-        <div class="flex gap-4">
-            <a href="?url=create-trip" class="hover:underline">Créer un trajet</a>
-            <a href="?url=my-reservations" class="hover:underline">Mes réservations</a>
-            <a href="?url=logout" class="hover:underline">Déconnexion</a>
+        <div class="flex gap-5">
+            <nav class="flex gap-4">
+                <a href="?url=home" class="hover:bg-[#00497c]-60"><span class="font-semibold text-[#00497c]">
+                        <p>Bienvenue <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?> !</p>
+                    </span></a>
+                <a href="?url=create-trip" class="hover:underline">Créer un trajet</a>
+                <a href="?url=my-reservations" class="hover:underline">Mes réservations</a>
+                <a href="?url=logout" class="hover:underline">Déconnexion</a>
+            </nav>
+
         </div>
 
     <?php else: ?>

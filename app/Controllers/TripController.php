@@ -15,13 +15,16 @@ class TripController
             exit;
         }
 
-        $agencyModel = new Agency($pdo);
+        $agencyModel = new Agency();
         $agencies = $agencyModel->getAll();
 
         if ($_SESSION['user']['role'] !== 'ADMIN') {
             echo "Accès refusé";
             exit;
         }
+
+        $agencyModel = new Agency();
+        $agencies = $agencyModel->getAll();
 
         require '../app/Views/create_trip.php';
     }
@@ -56,8 +59,8 @@ class TripController
             header("Location: ?url=login");
             exit;
         }
-        
-        global $pdo;
+
+        $pdo = getPDO();
 
         $userId = $_SESSION['user']['id'];
 
@@ -87,7 +90,7 @@ class TripController
             exit;
         }
 
-        global $pdo;
+        $pdo = getPDO();
 
         $userId = $_SESSION['user']['id'];
         $tripId = $_POST['trip_id'];
@@ -145,7 +148,7 @@ class TripController
 
         $userId = $_SESSION['user']['id'];
 
-        $tripModel = new Trip($pdo);
+        $tripModel = new Trip();
         $reservations = $tripModel->getUserReservations($userId);
 
         require '../app/Views/my_reservations.php';
@@ -158,7 +161,7 @@ class TripController
             exit;
         }
 
-        global $pdo;
+        $pdo = getPDO();
 
         $reservationId = $_POST['reservation_id'];
         $tripId = $_POST['trip_id'];
@@ -178,22 +181,6 @@ class TripController
         $stmt->execute([$tripId]);
 
         header("Location: ?url=my-reservations");
-    }
-
-    public function delete()
-    {
-        global $pdo;
-
-        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'ADMIN') {
-            header("Location: ?url=home");
-            exit;
-        }
-
-        $stmt = $pdo->prepare("DELETE FROM trips WHERE id = ?");
-        $stmt->execute([$_POST['trip_id']]);
-
-        header("Location: ?url=admin");
-        exit;
     }
 
     public function deleteTrip()

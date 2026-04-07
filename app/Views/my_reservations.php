@@ -12,9 +12,9 @@
     <?php include 'partials/header.php' ?>
 
     <main class="flex-grow max-w-4xl mx-auto w-full p-4">
-        <h1 class="text-2xl bold">Mes réservations</h1>
+        <h1 class="font-bold mb-4 text-3xl text-[#00497C]">Mes réservations</h1>
 
-       
+
 
         <?php if (empty($reservations)): ?>
             <p>Aucune réservation</p>
@@ -26,20 +26,21 @@
                     <p><?= $r['departure_city'] ?> → <?= $r['arrival_city'] ?></p>
                     <p>Départ : <?= $r['departure_datetime'] ?></p>
                     <p>Conducteur : <?= $r['firstname'] ?> <?= $r['lastname'] ?></p>
+                    <form method="POST" action="?url=cancel-reservation">
+                        <input type="hidden" name="reservation_id" value="<?= $r['reservation_id'] ?>">
+                        <input type="hidden" name="trip_id" value="<?= $r['trip_id'] ?>">
+                        <button type="submit" class="bg-[#cd2c2e] text-white rounded px-3 py-1">Annuler</button>
+                    </form>
                 </div>
 
-                <form method="POST" action="?url=cancel-reservation">
-                    <input type="hidden" name="reservation_id" value="<?= $r['reservation_id'] ?>">
-                    <input type="hidden" name="trip_id" value="<?= $r['trip_id'] ?>">
-                    <button type="submit" class="bg-[#cd2c2e] text-white rounded px-3 py-1">Annuler</button>
-                </form>
+
             <?php endforeach; ?>
 
         <?php endif; ?>
-        <a href="?url=home" class="bg-[#0074c7] text-white rounded px-3 py-1 mx-2 my-4">Retour</a>
-        </main>
+        <a href="?url=home" class="bg-[#00497C] text-white rounded px-3 py-1 my-4">Retour à l'accueil</a>
+    </main>
 
-        <?php include 'partials/footer.php' ?>
+    <?php include 'partials/footer.php' ?>
 </body>
 
 

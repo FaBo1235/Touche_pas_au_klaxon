@@ -13,7 +13,7 @@
 
     <main class="flex-grow max-w-5xl mx-auto w-full p-6">
 
-        <h1 class="text-3xl font-bold mb-6">
+        <h1 class="text-3xl font-bold mb-6 text-[#00497c]">
             Gestion des utilisateurs
         </h1>
 
@@ -55,7 +55,7 @@
                                     <form method="POST" action="?url=delete-user">
                                         <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
 
-                                        <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                        <button class="bg-[#cd2c2e] text-white px-3 py-1 rounded">
                                             Supprimer
                                         </button>
                                     </form>

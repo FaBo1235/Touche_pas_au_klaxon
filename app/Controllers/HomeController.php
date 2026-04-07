@@ -7,7 +7,7 @@ class HomeController
 {
     public function index()
     {
-        global $pdo;
+        $pdo = getPDO();
 
         $tripModel = new Trip($pdo);
 
@@ -29,7 +29,7 @@ class HomeController
             exit;
         }
 
-        global $pdo;
+        $pdo = getPDO();
 
         $tripModel = new Trip($pdo);
         $trips = $tripModel->getAvailableTrips();

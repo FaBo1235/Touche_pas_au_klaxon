@@ -6,28 +6,33 @@
     </a>
 
 
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-5">
 
-        <a href="?url=admin" class="hover:underline">
-            Dashboard
-        </a>
+        <nav class="flex gap-4">
+            <a href="?url=admin-agencies" class="hover:underline">Agences</a>
 
-        <a href="?url=admin-users" class="hover:underline">
+            <a href="?url=admin-users" class="hover:underline">
             Utilisateurs
-        </a>
+            </a>
 
-        <a href="?url=admin-trips" class="hover:underline">
+            <a href="?url=admin-trips" class="hover:underline">
             Trajets
-        </a>
+            </a>
 
-        <a href="?url=admin-reservations" class="hover:underline">
+            <a href="?url=create-trip" class="bg-[#82B864] px-3 py-1 rounded hover:bg-green-600">
+            Créer un trajet
+            </a>
+
+            <a href="?url=admin-reservations" class="hover:underline">
             Réservations
-        </a>
+            </a>
 
-        <a href="?url=logout"
+            <a href="?url=logout"
             class="rounded hover:underline">
             Déconnexion
-        </a>
+            </a>
+        </nav>
+
 
     </div>
 

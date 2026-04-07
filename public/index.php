@@ -1,14 +1,12 @@
-
-
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
-require_once '../app/Controllers/HomeController.php';
-require_once '../app/Controllers/AuthController.php';
-require_once '../app/Controllers/TripController.php';
-require_once '../app/Controllers/AdminController.php'; // ✅ AJOUT
+require_once __DIR__ . '/../app/Controllers/HomeController.php';
+require_once __DIR__ . '/../app/Controllers/AuthController.php';
+require_once __DIR__ . '/../app/Controllers/TripController.php';
+require_once __DIR__ . '/../app/Controllers/AdminController.php';
 
 $url = $_GET['url'] ?? 'home';
 
@@ -52,7 +50,7 @@ if ($url === 'login') {
 
     $controller = new TripController();
     $controller->deleteTrip();
-} elseif ($url === 'admin_user') {
+} elseif ($url === 'admin-users') {
 
     $controller = new AdminController();
     $controller->users();
@@ -60,6 +58,15 @@ if ($url === 'login') {
 
     $controller = new AdminController();
     $controller->deleteUser();
+} elseif ($url === 'admin-agencies') {
+    $controller = new AdminController();
+    $controller->agencies();
+} elseif ($url === 'create-agency') {
+    $controller = new AdminController();
+    $controller->createAgency();
+} elseif ($url === 'delete-agency') {
+    $controller = new AdminController();
+    $controller->deleteAgency();
 } else {
 
     $controller = new HomeController();

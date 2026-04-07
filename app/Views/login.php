@@ -13,7 +13,7 @@
 
         <div class="bg-[#f1f8fc] shadow p-6 rounded w-full max-w-md">
 
-            <h1 class="text-2xl font-bold mb-4 text-center">Connexion</h1>
+            <h1 class="text-3xl font-bold mb-4 text-center">Connexion</h1>
 
             <?php if (isset($_SESSION['error'])): ?>
 

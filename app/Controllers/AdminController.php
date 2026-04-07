@@ -9,7 +9,7 @@ class AdminController
         $userModel = new User();
         $users = $userModel->getAllUsers();
 
-        require '../app/Views/admin_users.php';
+        require __DIR__ . '/../Views/admin_user.php';
     }
 
     public function deleteUser()
@@ -25,5 +25,31 @@ class AdminController
 
         header('Location: ?url=admin-users');
         exit; 
+    }
+
+    public function agencies()
+    {
+        $agencyModel = new Agency();
+        $agencies = $agencyModel->getAll();
+
+        require '../app/Views/admin_agencies.php';
+    }
+
+    public function createAgency()
+    {
+        if ($_POST['city']) {
+            $agencyModel = new Agency();
+            $agencyModel->create($_POST['city']);
+        }
+
+        header('Location: ?url=admin-agencies');
+    }
+
+    public function deleteAgency()
+    {
+        $agencyModel = new Agency();
+        $agencyModel->delete($_POST['agency_id']);
+
+        header('Location: ?url=admin-agencies');
     }
 }

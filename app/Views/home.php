@@ -12,14 +12,8 @@
 
     <main class="flex-grow max-w-4xl mx-auto w-full p-4">
 
-        <?php if (isset($_SESSION['user'])): ?>
 
-            <p class="text-[#0074c7] text-4xl bold">Bienvenue <?= $_SESSION['user']['firstname'] ?> !</p>
-
-        <?php endif; ?>
-
-
-        <form method="GET" action="" class="flex justify-end m-4">
+        <form method="GET" action="" class="flex justify-end">
             <input type="hidden" name="url" value="home">
 
             <input type="text" name="search" placeholder="Ville de départ" class="border rounded focus:border-[#384050] mt-4 px-3 py-1">
@@ -27,7 +21,7 @@
             <button type="submit" class="bg-[#00497c] rounded text-white mt-4 px-3 py-1">Rechercher</button>
         </form>
 
-        <h2 class="text-xl font-bold mb-4">Liste des trajets</h2>
+        <h1 class="text-3xl font-bold mb-4 text-[#00497c]">Liste des trajets</h1>
 
         <?php if (empty($trips)): ?>
             <p>Aucun trajet disponible</p>
@@ -37,9 +31,9 @@
 
             <div class="border mt-4 px-5 py-1 rounded shadow">
 
-                <p>
-                    <strong><?= $trip['departure_city'] ?></strong> →
-                    <strong><?= $trip['arrival_city'] ?></strong>
+                <p class="font-bold">
+                    <?= $trip['departure_city'] ?> →
+                    <?= $trip['arrival_city'] ?>
                 </p>
 
                 <p>
