@@ -1,6 +1,6 @@
 <?php
 
-require_once '../config/database.php';
+require_once __DIR__ . '/../config/database.php';
 require_once '../app/Models/User.php';
 
 class AuthController
@@ -12,12 +12,11 @@ class AuthController
 
     public function login()
     {
-        global $pdo;
 
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $userModel = new User($pdo);
+        $userModel = new User();
         $user = $userModel->findByEmail($email);
 
         if ($user && $user['password'] === $password) {
@@ -27,6 +26,13 @@ class AuthController
             header("Location: /klaxon/public");
             exit;
         }
+
+       
+            $_SESSION['error'] = "Email ou mot de passe incorrect";
+            $_SESSION['old_email'] = $_POST['email'];
+            header('Location: ?url=login');
+            exit;
+
 
         echo "Email ou mot de passe incorrect";
     }

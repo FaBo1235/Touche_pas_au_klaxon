@@ -7,59 +7,57 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<header>
-    <a href="?url=home"><img src="images/logo.png" alt="logo de voiture pour le coivoiturage" class="w-32"></a>
-</header>
-
-<body class="bg-gray-100">
-
-    <div class="max-w-4xl mx-10 p-4">
-
-        <h1 class="text-3xl font-bold mb-4">Panel Admin</h1>
 
 
+<body class="flex flex-col min-h-screen">
 
-        <h2 class="text-2xl font-semibold mt-6 mb-4">Liste des trajets</h2>
 
-        <?php foreach ($trips as $trip): ?>
+    <?php include 'partials/admin_header.php' ?>
 
-            <div class="bg-[#f1f8fc] p-4 mb-4 rounded shadow">
+    <main class="flex-grow max-w-4xl mx-auto w-full p-4">
+        <div class="max-w-4xl mx-10 p-4">
 
-                <p class="text-lg font-bold">
-                    <?= $trip['departure_city'] ?> → <?= $trip['arrival_city'] ?>
-                </p>
+            <h1 class="text-3xl font-bold mb-4">Tableau de bord administrateur</h1>
 
-                <p class="text-gray-600">
-                    Départ : <?= date('d/m/Y H:i', strtotime($trip['departure_datetime'])) ?>
+            <h2 class="text-2xl font-semibold mt-6 mb-4">Liste des trajets</h2>
 
-                </p>
+            <?php foreach ($trips as $trip): ?>
 
-                <p>
-                    Arrivée : <?= date('d/m/Y H:i', strtotime($trip['arrival_datetime'])) ?>
-                </p>
+                <div class="bg-[#f1f8fc] p-4 mb-4 rounded shadow">
 
-                <p class="text-sm text-gray-500">
-                    Conducteur :
-                    <?= $trip['firstname'] ?> <?= $trip['lastname'] ?>
-                </p>
+                    <p class="text-lg font-bold">
+                        <?= $trip['departure_city'] ?> → <?= $trip['arrival_city'] ?>
+                    </p>
 
-                <form method="POST" action="?url=delete-trip" class="mt-2">
-                    <input type="hidden" name="trip_id" value="<?= $trip['id'] ?>">
+                    <p class="text-gray-600">
+                        Départ : <?= date('d/m/Y H:i', strtotime($trip['departure_datetime'])) ?>
+                    </p>
 
-                    <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
-                        Supprimer
-                    </button>
-                </form>
+                    <p>
+                        Arrivée : <?= date('d/m/Y H:i', strtotime($trip['arrival_datetime'])) ?>
+                    </p>
 
-            </div>
+                    <p class="text-sm text-gray-500">
+                        Conducteur :
+                        <?= $trip['firstname'] ?> <?= $trip['lastname'] ?>
+                    </p>
 
-        <?php endforeach; ?>
+                    <form method="POST" action="?url=delete-trip" class="mt-2">
+                        <input type="hidden" name="trip_id" value="<?= $trip['id'] ?>">
 
-        <a href="?url=home" class="bg-gray-500 text-white px-3 py-1 m-6 rounded">
-            Retour
-        </a>
-    </div>
+                        <button class="bg-[#cd2c2e] text-white px-3 py-1 rounded hover:bg-[#cd2c2e]/80">
+                            Supprimer
+                        </button>
+                    </form>
 
+                </div>
+
+            <?php endforeach; ?>
+        </div>
+
+    </main>
+
+    <?php include 'partials/footer.php' ?>
 </body>
 
 </html>
