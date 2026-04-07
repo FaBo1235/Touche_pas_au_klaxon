@@ -27,12 +27,10 @@ class AuthController
             exit;
         }
 
-       
-            $_SESSION['error'] = "Email ou mot de passe incorrect";
-            $_SESSION['old_email'] = $_POST['email'];
-            header('Location: ?url=login');
-            exit;
-
+        $_SESSION['error'] = "Email ou mot de passe incorrect";
+        $_SESSION['old_email'] = $_POST['email'];
+        header('Location: ?url=login');
+        exit;
 
         echo "Email ou mot de passe incorrect";
     }
