@@ -1,5 +1,7 @@
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `phone`, `role`) VALUES
-(1, 'Jean', 'Dupont', 'jean@entreprise.com', 'test', '0600000000', 'ADMIN');
+(1, 'Jean', 'Dupont', 'jean@entreprise.com', 'test', '0600000000', 'USER'),
+(2, 'Admin', 'Principal', 'admin@entreprise.com', 'test1', 'ADMIN');
+
 
 INSERT INTO `agencies` (`id`, `name`, `city`) VALUES
 (1, 'Agence Paris', 'Paris'),
