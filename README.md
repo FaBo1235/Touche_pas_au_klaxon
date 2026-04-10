@@ -2,7 +2,7 @@
 
 Application de covoiturage développée en PHP (architecture MVC).
 
-## 📋 Fonctionnalités
+## Fonctionnalités
 
 ### Utilisateur
 - Inscription / Connexion
@@ -21,7 +21,7 @@ Application de covoiturage développée en PHP (architecture MVC).
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 1. Cloner le projet :
 ```bash
